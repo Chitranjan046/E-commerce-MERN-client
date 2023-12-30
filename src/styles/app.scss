@@ -1,3 +1,4 @@
+@import "mixin";
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -9,7 +10,7 @@
     padding: 0;
     box-sizing: border-box;
   }
-
+  
   a {
     text-decoration: none;
     color: black;
@@ -19,8 +20,45 @@
     color: red;
   }
   .purple {
-    color: rgb(49, 21, 7);
+    color: rgb(47, 0, 255);
   }
   .green {
-    color: rgb(177, 213, 177);
+    color: rgb(0, 195, 0);
+  }
+  
+  .admin-container {
+    @include grid(1fr 4fr, 2rem);
+    height: 100vh;
+    background-color: rgb(241, 39, 39);
+    > aside {
+      width: 100%;
+      background-color: rgb(178, 220, 39);
+      padding: 1rem;
+      z-index: 10;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+  
+      > div {
+        margin: 2rem 1rem;
+        > h5 {
+          @include heading(2px);
+          opacity: 0.8;
+          margin: 1rem 0;
+        }
+        > ul {
+          @include flex(column, unset, unset, 0.5rem);
+          list-style: none;
+          > li {
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            a {
+              color: rgba(0, 0, 0, 0.825);
+              @include flex(row, unset);
+            }
+          }
+        }
+      }
+    }
   }
