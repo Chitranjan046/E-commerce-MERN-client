@@ -2,7 +2,8 @@ import { FaRegBell } from "react-icons/fa";
 import AdminSidebar from "../components/AdminSidebar";
 import { BsSearch } from "react-icons/bs";
 import userImg from "../assets/userImg.jpg";
-import { BiMaleFemale } from "react-icons/bi";
+import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
+import data from "../assets/data.json";
 
 
 const dashboard = () => {
@@ -45,8 +46,36 @@ const dashboard = () => {
           />
         </section>
 
-        
+        <section className="graph-container">
+          <div className="revenue-chart">
+            <h2>Revenue & Transaction</h2>
+            {/* Grapph here */}
+            <BarChart
+              data_2={[300, 144, 433, 655, 237, 755, 190]}
+              data_1={[200, 444, 343, 556, 778, 455, 990]}
+              title_1="Revenue"
+              title_2="Transaction"
+              bgColor_1="rgb(0,115,255)"
+              bgColor_2="rgba(53,162,235,0.8)"
+            />
+          </div>
 
+          <div className="dashboard-categories">
+            <h2>Inventory</h2>
+            <div>
+              {data.categories.map((i) => (
+                <CategoryItem
+                  key={i.heading}
+                  heading={i.heading}
+                  value={i.value}
+                  color={`hsl(${i.value * 4},${i.value}%,50%)`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        
       </main>
     </div>
   );
@@ -102,5 +131,25 @@ const WidgetItem = ({
   </article>
 );
 
+interface CategoryItemProps {
+  color: string;
+  value: number;
+  heading: string;
+}
+
+const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
+  <div className="category-item">
+    <h5>{heading}</h5>
+    <div>
+      <div
+        style={{
+          backgroundColor: color,
+          width: `${value}%`,
+        }}
+      ></div>
+    </div>
+    <span>{value}%</span>
+  </div>
+);
 
 export default dashboard;
