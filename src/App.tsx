@@ -5,6 +5,7 @@ const Dashboard = lazy(()=> import("./pages/Dashboard"));
 const Customers = lazy(()=> import("./pages/Customers"));
 const Product = lazy(()=> import("./pages/Product"));
 const Transaction = lazy(()=> import("./pages/Transaction"));
+const Customers = lazy(()=> import("./pages/management/NewProduct"));
 
 const App = () => { // Use '=' instead of '=' in function declaration
   return (
@@ -16,6 +17,16 @@ const App = () => { // Use '=' instead of '=' in function declaration
         <Route path="/admin/Customers" element={<Customers />} />
         <Route path="/admin/Product" element={<Product />} />
         <Route path="/admin/Transaction" element={<Transaction />} />
+
+      
+
+          {/* Charts */}
+
+
+        
+        {/* Managment */}
+        <Route path="/admin/product/new" element={<NewProduct />} />
+        <Route path="/admin/product/:id" element={<ProductManagement />} />
       
       </Routes>
       <Suspense/>
