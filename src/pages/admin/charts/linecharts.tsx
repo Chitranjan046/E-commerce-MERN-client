@@ -1,5 +1,5 @@
-import AdminSidebar from "../../components/AdminSidebar";
-import { LineChart } from "../../components/Charts";
+import AdminSidebar from "../../../components/admin/AdminSidebar";
+import { LineChart } from "../../../components/admin/Charts";
 
 const months = [
   "January",
@@ -16,7 +16,7 @@ const months = [
   "Dec",
 ];
 
-const BarCharts = () => {
+const Linecharts = () => {
   return (
     <div className="admin-container">
       <AdminSidebar />
@@ -29,18 +29,19 @@ const BarCharts = () => {
             ]}
             label="Users"
             borderColor="rgb(53, 162, 255)"
-            backgroundColor="rgba(53, 162, 255,0.5)"
             labels={months}
+            backgroundColor="rgba(53, 162, 255, 0.5)"
           />
           <h2>Active Users</h2>
         </section>
+
         <section>
           <LineChart
             data={[40, 60, 244, 100, 143, 120, 41, 47, 50, 56, 32]}
             backgroundColor={"hsla(269,80%,40%,0.4)"}
             borderColor={"hsl(269,80%,40%)"}
-            label="Products"
             labels={months}
+            label="Products"
           />
           <h2>Total Products (SKU)</h2>
         </section>
@@ -56,7 +57,7 @@ const BarCharts = () => {
             label="Revenue"
             labels={months}
           />
-          <h2>Total Revenue</h2>
+          <h2>Total Revenue </h2>
         </section>
 
         <section>
@@ -70,11 +71,11 @@ const BarCharts = () => {
             label="Discount"
             labels={months}
           />
-          <h2>Discount Allotted</h2>
+          <h2>Discount Allotted </h2>
         </section>
       </main>
     </div>
   );
 };
 
-export default BarCharts;
+export default Linecharts;

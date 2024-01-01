@@ -1,19 +1,23 @@
-import { useState, ChangeEvent, FormEvent } from "react";
-import AdminSidebar from "../../components/AdminSidebar";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { FaTrash } from "react-icons/fa";
+import AdminSidebar from "../../../components/admin/AdminSidebar";
 
 const img =
   "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=804";
 
-const ProductManagement = () => {
-  const [name, setName] = useState<string>("Puma Shoes");
+const Productmanagement = () => {
   const [price, setPrice] = useState<number>(2000);
   const [stock, setStock] = useState<number>(10);
+  const [name, setName] = useState<string>("Puma Shoes");
   const [photo, setPhoto] = useState<string>(img);
+  const [category, setCategory] = useState<string>("footwear");
 
-  const [nameUpdate, setNameUpdate] = useState<string>(name);
   const [priceUpdate, setPriceUpdate] = useState<number>(price);
   const [stockUpdate, setStockUpdate] = useState<number>(stock);
+  const [nameUpdate, setNameUpdate] = useState<string>(name);
+  const [categoryUpdate, setCategoryUpdate] = useState<string>(category);
   const [photoUpdate, setPhotoUpdate] = useState<string>(photo);
+  const [photoFile, setPhotoFile] = useState<File>();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file: File | undefined = e.target.files?.[0];
@@ -23,41 +27,46 @@ const ProductManagement = () => {
     if (file) {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        if (typeof reader.result === "string") setPhotoUpdate(reader.result);
+        if (typeof reader.result === "string") {
+          setPhotoUpdate(reader.result);
+          setPhotoFile(file);
+        }
       };
     }
   };
 
-  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+  const submitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setName(nameUpdate);
     setPrice(priceUpdate);
     setStock(stockUpdate);
     setPhoto(photoUpdate);
   };
+
   return (
     <div className="admin-container">
       <AdminSidebar />
       <main className="product-management">
         <section>
-          <strong>ID - asnmdkasndmsan</strong>
+          <strong>ID - fsdfsfsggfgdf</strong>
           <img src={photo} alt="Product" />
           <p>{name}</p>
           {stock > 0 ? (
             <span className="green">{stock} Available</span>
           ) : (
-            <span className="red">Not Available</span>
+            <span className="red"> Not Available</span>
           )}
-          <h3>${price}</h3>
+          <h3>₹{price}</h3>
         </section>
-
         <article>
+          <button className="product-delete-btn">
+            <FaTrash />
+          </button>
           <form onSubmit={submitHandler}>
             <h2>Manage</h2>
             <div>
               <label>Name</label>
               <input
-                required
                 type="text"
                 placeholder="Name"
                 value={nameUpdate}
@@ -67,7 +76,6 @@ const ProductManagement = () => {
             <div>
               <label>Price</label>
               <input
-                required
                 type="number"
                 placeholder="Price"
                 value={priceUpdate}
@@ -77,7 +85,6 @@ const ProductManagement = () => {
             <div>
               <label>Stock</label>
               <input
-                required
                 type="number"
                 placeholder="Stock"
                 value={stockUpdate}
@@ -86,12 +93,21 @@ const ProductManagement = () => {
             </div>
 
             <div>
+              <label>Category</label>
+              <input
+                type="text"
+                placeholder="eg. laptop, camera etc"
+                value={categoryUpdate}
+                onChange={(e) => setCategoryUpdate(e.target.value)}
+              />
+            </div>
+
+            <div>
               <label>Photo</label>
-              <input required type="file" onChange={changeImageHandler} />
+              <input type="file" onChange={changeImageHandler} />
             </div>
 
             {photoUpdate && <img src={photoUpdate} alt="New Image" />}
-
             <button type="submit">Update</button>
           </form>
         </article>
@@ -100,4 +116,4 @@ const ProductManagement = () => {
   );
 };
 
-export default ProductManagement;
+export default Productmanagement;

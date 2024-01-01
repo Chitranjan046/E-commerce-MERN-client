@@ -99,7 +99,11 @@
 
       > div {
         overflow-y: auto;
+        height: 40rem;
         padding-left: 0.5rem;
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
 
       .category-item {

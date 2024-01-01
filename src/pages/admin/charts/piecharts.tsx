@@ -1,6 +1,6 @@
-import AdminSidebar from "../../components/AdminSidebar";
-import { DoughnutChart, PieChart } from "../../components/Charts";
-import { categories } from "../../assets/data.json";
+import AdminSidebar from "../../../components/admin/AdminSidebar";
+import { DoughnutChart, PieChart } from "../../../components/admin/Charts";
+import data from "../../../assets/data.json";
 
 const PieCharts = () => {
   return (
@@ -27,10 +27,10 @@ const PieCharts = () => {
         <section>
           <div>
             <DoughnutChart
-              labels={categories.map((i) => i.heading)}
-              data={categories.map((i) => i.value)}
-              backgroundColor={categories.map(
-                (i) => `hsl(${i.value * 4},${i.value}%, 50%)`
+              labels={data.categories.map((i) => i.heading)}
+              data={data.categories.map((i) => i.value)}
+              backgroundColor={data.categories.map(
+                (i) => `hsl(${i.value * 4}, ${i.value}%, 50%)`
               )}
               legends={false}
               offset={[0, 0, 0, 80]}
@@ -50,8 +50,9 @@ const PieCharts = () => {
               cutout={"70%"}
             />
           </div>
-          <h2>Stock Availability</h2>
+          <h2> Stock Availability</h2>
         </section>
+
         <section>
           <div>
             <DoughnutChart
@@ -103,7 +104,7 @@ const PieCharts = () => {
               labels={["Admin", "Customers"]}
               data={[40, 250]}
               backgroundColor={[`hsl(335, 100%, 38%)`, "hsl(44, 98%, 50%)"]}
-              offset={[0, 80]}
+              offset={[0, 50]}
             />
           </div>
         </section>

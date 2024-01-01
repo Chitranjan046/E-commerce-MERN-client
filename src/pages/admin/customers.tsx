@@ -1,9 +1,8 @@
-import { ReactElement } from "react";
-import AdminSidebar from "../components/AdminSidebar";
-import { Column } from "react-table";
-import { useState, useCallback } from "react";
-import TableHOC from "../components/TableHOC";
+import { ReactElement, useState } from "react";
 import { FaTrash } from "react-icons/fa";
+import { Column } from "react-table";
+import AdminSidebar from "../../components/admin/AdminSidebar";
+import TableHOC from "../../components/admin/TableHOC";
 
 interface DataType {
   avatar: ReactElement;
@@ -40,10 +39,11 @@ const columns: Column<DataType>[] = [
     accessor: "action",
   },
 ];
+
 const img = "https://randomuser.me/api/portraits/women/54.jpg";
 const img2 = "https://randomuser.me/api/portraits/women/50.jpg";
 
-const arr: DataType[] = [
+const arr: Array<DataType> = [
   {
     avatar: (
       <img
@@ -88,23 +88,20 @@ const arr: DataType[] = [
 ];
 
 const Customers = () => {
-  const [data] = useState<DataType[]>(arr);
+  const [rows, setRows] = useState<DataType[]>(arr);
 
-  const Table = useCallback(
-    TableHOC<DataType>(
-      columns,
-      data,
-      "dashboard-product-box",
-      "Customers",
-      true
-    ),
-    []
-  );
+  const Table = TableHOC<DataType>(
+    columns,
+    rows,
+    "dashboard-product-box",
+    "Customers",
+    rows.length > 6
+  )();
 
   return (
     <div className="admin-container">
       <AdminSidebar />
-      <main>{Table()}</main>
+      <main>{Table}</main>
     </div>
   );
 };
