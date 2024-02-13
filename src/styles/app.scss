@@ -25,7 +25,12 @@
     color: rgb(0, 195, 0);
   }
   
+
+ 
   @import "admin/mixin";
+  @import "home";
+  @import "cart";
+  @import "shipping";
   @import "admin/dashboard";
   @import "admin/products";
   @import "admin/chart";

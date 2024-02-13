@@ -5,7 +5,7 @@ import { useState } from 'react';
 const user = { _id: 'hhv', role: 'admin' };
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [IsOpen, setIsOpen] = useState<boolean>(false);
   return (
     <nav className='header'>
       <Link onClick={ () => setIsOpen(false)} to={'/'}>Home</Link>
