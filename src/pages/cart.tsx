@@ -1,10 +1,17 @@
-
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { VscError } from "react-icons/vsc";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-import CartItem from "../components/cart-item";
+import CartItemCard from "../components/cart-item";
+import {
+  addToCart,
+  calculatePrice,
+  discountApplied,
+  removeCartItem,
+} from "../redux/reducer/cartReducer";
+import { RootState, server } from "../redux/store";
+import { CartItem } from "../types/types";
 
 const Cart = () => {
   const { cartItems, subtotal, tax, total, shippingCharges, discount } =
