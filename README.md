@@ -2,6 +2,13 @@
 
 This is a client side code for an e-commerce application  using React , Vite and TypeScript.
 
+
+### Description:
+
+An e-commerce store built with the MERN stack enables two main different flows or implementations:
+1. Admins manage and control all components of the store by adding, updating, and deleting products.
+2. Users can enjoy this comprehensive web application by logging in, registering, viewing products, searching products, viewing product details, adding to cart, providing shipping addresses, and placing orders by making credit card payments. Additionally, users can install this web application on their mobile and desktop devices and use it as an application.
+
 # Server Side Code Repo Link 
 
 
