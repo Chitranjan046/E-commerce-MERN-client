@@ -31,6 +31,9 @@ const Header = ({ user }: PropsType) => {
 
   return (
     <nav className="header">
+      <div className="chitranjan">
+        Welcome To Cpx
+      </div>
       <Link onClick={() => setIsOpen(false)} to={"/"}>
         HOME
       </Link>

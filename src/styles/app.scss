@@ -20,8 +20,8 @@ a {
 }
 
 $color1: white;
-$color2: rgb(46, 46, 46);
-$color3: rgb(0, 104, 136);
+$color2: rgb(244, 89, 89);
+$color3: rgb(17, 238, 21);
 
 .red {
   color: red;
@@ -65,12 +65,45 @@ $color3: rgb(0, 104, 136);
   }
   
   .header {
-    @include flex(row, flex-end, stretch, 1.2rem);
+    @include flex(row, flex-end, stretch, 1rem);
     padding: 1rem;
+    
+  
+    // .chitranjan {
+    //   font-style: italic; // Apply italic font style
+    //   margin-right: auto; // Push it to the left side
+    //   padding-right: 1rem; // Adjust padding as needed
+    //   font-size: 1.2rem;
+    //   box-shadow: 0 8px 6px -6px green;
+
+    //   &:hover {
+    //     color: rgb(248, 57, 10);
+    //     background-color: rgb(74, 172, 8);
+    //   }
+    // }
+     
+    @media only screen and (min-width: 1024px) {
+      // Styles for large devices like laptops
+      .chitranjan {
+        font-style: italic; // Apply italic font style
+        margin-right: auto; // Push it to the left side
+        padding-right: 1rem; // Adjust padding as needed
+        font-size: 1.2rem;
+        box-shadow: 0 8px 6px -6px green;
+  
+        &:hover {
+          color: rgb(248, 57, 10);
+          background-color: rgb(74, 172, 8);
+        }
+      }}
+
+
     a {
       color: $color2;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       font-size: 1.2rem;
+     
+     
   
       &:hover {
         color: $color3;
@@ -100,6 +133,7 @@ $color3: rgb(0, 104, 136);
       }
     }
   }
+  
   .not-found {
     height: 80vh;
     @include flex(column);

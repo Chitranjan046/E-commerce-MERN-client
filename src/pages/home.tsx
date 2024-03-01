@@ -27,7 +27,7 @@ const Home = () => {
       <h1>
         Latest Products
         <Link to="/search" className="findmore">
-          More
+          <h2>More</h2>
         </Link>
       </h1>
 

@@ -14,12 +14,23 @@
 
   > h1 {
     @include heading(1px);
+    font-style: italic;
     margin-top: 3rem;
     @include flex(row, space-between, center);
-  }
+    color: red;
+ 
 
+  > h2 {
+    @include heading(1px);
+    font-style: italic;
+    margin-top: 3rem;
+    @include flex(row, space-between, center);
+    
+  }
+}
   .findmore {
     font-size: 1rem;
+    color: rgb(43, 255, 0);
   }
 
   > main {
